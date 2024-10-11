@@ -1,0 +1,49 @@
+.card-body .row .col-6 img{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.my-card{
+    transition: box-shadow 0.5s;
+
+}
+
+.my-card:hover{
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.mybutton{
+    border-radius: 15px;
+    padding: 10px 15px;
+    background-color: #433878;
+    color: #fff;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+
+}
+.mybutton:hover {
+    background-color: #5b4d98; /* Lighter shade on hover */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+
+.restaurant-name{
+    position: relative;
+}
+
+.restaurant-name::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    font-weight: 800;
+    background-color: #33372C;
+    left: 0%;
+    position: absolute;
+    bottom: -10px;
+    border-radius: 10px;
+}
