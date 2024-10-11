@@ -8,3 +8,17 @@ Step 5 - publish your build changes from your local folder to github pages with 
    npx angular-cli-ghpages --dir=dist/_repo_name_
 Step 6 -  go to repo setting and select gh-pages branch and save
 
+
+
+npx angular-cli-ghpages --dir=dist/food-app
+
+
+{
+    "/api": {
+      "target": "https://freeapi.miniprojectideas.com",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
