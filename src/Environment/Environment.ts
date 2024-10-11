@@ -1,3 +1,3 @@
 export const environment={
-    Apiurl:'https://freeapi.miniprojectideas.com/api/zomato/'
+    Apiurl:'https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/zomato/'
 }
