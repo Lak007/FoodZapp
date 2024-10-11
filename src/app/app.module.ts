@@ -8,13 +8,15 @@ import { FoodItemComponent } from './Component/food-item/food-item.component';
 import { FoodsComponent } from './Component/foods/foods.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './Component/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FoodsComponent,
     FoodRestaurantComponent,
-    FoodItemComponent
+    FoodItemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

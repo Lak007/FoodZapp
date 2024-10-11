@@ -29,4 +29,13 @@ export class FoodServiceService {
     .set('categoryId',categoryId);
     return this.http.get(environment.Apiurl+'GetFoodItemOfRestaurantByCategory',{params});
   }
+
+
+  getRestaurantById(restaurantId:number):Observable<any>{
+    const params = new HttpParams()
+    .set('restaurantId',restaurantId);
+    return this.http.get(environment.Apiurl+'GetRestaurantByRestaurantId',{params});
+  }
 }
+
+

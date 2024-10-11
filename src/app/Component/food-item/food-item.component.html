@@ -1,0 +1,62 @@
+<div class="row mt-3" *ngIf="restaurantDetails && FoodItemData">
+    <div class="card card-1 w-100">
+        <div class="card-header bg-danger">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h2 class="text-light mb-3">{{restaurantDetails.name}}</h2>
+                    <p class="text-light"><span>Address: </span>{{restaurantDetails.address}}</p>
+                    <p class="text-light"><span>Contact: </span>{{restaurantDetails.contactNo}}</p>
+                </div>
+                <div class="col-12 col-md-6 d-flex flex-column align-items-end justify-content-between">
+                    <div class="star-rating mb-2">
+                        <p>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </p>
+                    </div>
+                    <p class="text-light">Cuisine Type: {{restaurantDetails.cuisineType}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12 col-sm-6 col-md-4 d-flex" *ngFor="let data of FoodItemData">
+        <div class="card card-2 mb-3 flex-fill"> <!-- Added flex-fill -->
+            <div class="card-body"> <!-- Added d-flex flex-column -->
+                <div class="row "> <!-- Ensures the row expands -->
+                    <div class="col-12 col-md-6">
+                        <img [src]="data.photoUrl" class="img-fluid" alt="{{data.menuItemName}}">
+                    </div>
+                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                        <p class="fw-bold text-center">
+                            {{ data.description | slice:0:60 }}
+                        </p>
+                        <div class="star-rating-red mt-4">
+                            <p class="text-center">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-6">
+                        <p class="fw-bold">{{data.menuItemName}}</p>
+                        <p class="fw-bold">Price : ₹{{data.price}}</p>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex align-items-end">
+                        <button class="mybutton w-100" (click)="addToCart()">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

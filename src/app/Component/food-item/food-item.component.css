@@ -1,0 +1,90 @@
+ p{
+    padding: 0;
+    margin: 0;
+}
+
+.star-rating {
+    color: gold;
+    font-size: 27px; 
+}
+.star-rating i {
+    transition: color 0.3s;
+}
+
+.star-rating i:hover,
+.star-rating i:hover ~ i {
+    color: darkgoldenrod; /* Dark gold on hover */
+}
+
+
+h2{
+  position: relative;  
+  display: inline-block;
+}
+h2::after{
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: -5px;
+    background-color: #FFF;
+    height: 4px;
+    left: 0%;
+}
+
+
+
+.card-1 {
+    border: none; /* Remove default border if necessary */
+    background-color: #dc3545; /* Red background for card */
+}
+
+
+img{
+    width: 100%;
+    overflow: hidden;
+    height: 150px;
+}
+
+.card-2{
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.7s;
+    cursor: pointer;
+}
+
+.card-2:hover{
+    transform: translateY(-7px);
+}
+
+.mybutton{
+    border-radius: 15px;
+    padding: 10px 15px;
+    background-color: #433878;
+    color: #fff;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+
+}
+.mybutton:hover {
+    background-color: #5b4d98; /* Lighter shade on hover */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+}
+
+
+
+.star-rating-red {
+    color: red;
+    font-size: 15px; 
+}
+.star-rating-red i {
+    transition: color 0.3s;
+}
+
+.star-rating-red i:hover,
+.star-rating-red i:hover ~ i {
+    color: darkred; /* Dark gold on hover */
+}
+
