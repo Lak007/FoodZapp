@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/Services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +9,17 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'FoodApp';
-  UserData:any='';
+  UserData:boolean= false;
 
-constructor(private route:Router){
+constructor(private route:Router,private auth:AuthService){
 
 }
   ngOnInit(): void {
-    const userdata = sessionStorage.getItem('User');
-    var user = userdata? JSON.parse(userdata):null;
-    if(user!=null){
-      this.UserData=user;
-    }
+    this.auth.currentUser$.subscribe(user=>{
+      if(user!=null){
+        this.UserData=true;
+      }
+    })
   }
 
   getRoute(){
@@ -27,12 +28,15 @@ constructor(private route:Router){
 
 
   navigatetoLogin(){
-    this.route.navigate(['Login']);
+    this.route.navigate(['/Login']);
   }
 
 
   logOut(){
     sessionStorage.clear();
-    this.route.navigate(['Login']);
+    this.auth.logOut();
+    this.UserData=false
+    this.route.navigate(['/Login']);
+
   }
 }

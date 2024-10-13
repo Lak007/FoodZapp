@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { User } from 'src/Model/User.model';
+import { AuthService } from 'src/Services/auth.service';
 import { FoodServiceService } from 'src/Services/food-service.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent {
 
   loginform!:FormGroup;
   UserMessage:any;
-  constructor(private fb:FormBuilder , private service:FoodServiceService, private router:Router){
+  constructor(private fb:FormBuilder , private service:FoodServiceService, private router:Router,private auth:AuthService){
     this.loginform = this.fb.group({
       Username:['',[Validators.required]],
       password:['',[Validators.required,Validators.minLength]]
@@ -47,6 +48,7 @@ export class LoginComponent {
             sessionStorage.clear();
             var UserSession = JSON.stringify(this.UserMessage.data);
             sessionStorage.setItem('User',UserSession);
+            this.auth.logIn();
             this.router.navigate(['/Foods']);
           }
         },
