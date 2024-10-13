@@ -47,3 +47,72 @@
     bottom: -10px;
     border-radius: 10px;
 }
+
+
+
+.custom-row {
+    height: 300px; 
+}
+
+@media (max-width: 768px) { 
+    .custom-row {
+        height: 200px; 
+    }
+}
+
+@media (max-width: 576px) { 
+    .custom-row {
+        height: 150px; 
+    }
+}
+
+@media(max-width:170){
+    .alert h1{
+        font-size: 0.2rem;
+    }
+}
+
+
+.my-class{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.star-rating-red {
+    color: red;
+    font-size: 15px; 
+}
+.star-rating-red i {
+    transition: color 0.3s;
+}
+
+.star-rating-red i:hover,
+.star-rating-red i:hover ~ i {
+    color: darkred; /* Dark gold on hover */
+}
+
+
+.dummy span {
+    transition: transform 0.3s ease;
+    position: relative;
+    transition: transform 0.5s;
+    animation: dance 2s;
+
+}
+
+
+@keyframes dance {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}
+
+
+img{
+    width: 100%;
+    height: 100%;
+}
+

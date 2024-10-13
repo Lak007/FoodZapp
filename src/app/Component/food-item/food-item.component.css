@@ -42,7 +42,7 @@ h2::after{
 img{
     width: 100%;
     overflow: hidden;
-    height: 150px;
+    height: 100px
 }
 
 .card-2{
@@ -87,4 +87,22 @@ img{
 .star-rating-red i:hover ~ i {
     color: darkred; /* Dark gold on hover */
 }
+
+
+.my-class{
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make sure the card body has a height */
+}
+
+.row.mt-3 {
+    margin-top: auto; /* Push this row to the bottom */
+}
+
 

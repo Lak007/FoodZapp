@@ -10,10 +10,11 @@ import { FoodServiceService } from 'src/Services/food-service.service';
 export class FoodRestaurantComponent implements OnInit{
   categoryId:number=0;
   restaurtantArray:any[] =[];
+  LoadingFlag:boolean=true;
 
   constructor(private activaterouter:ActivatedRoute , private service :FoodServiceService , private router:Router){
     this.activaterouter.params.subscribe((res:any)=>{
-      console.log(res);
+      //console.log(res);
       this.categoryId = res.id;
     })
   }
@@ -25,11 +26,15 @@ export class FoodRestaurantComponent implements OnInit{
     this.service.GetRestaurantByCategoryId(this.categoryId).subscribe(
       (data:any)=>{
         this.restaurtantArray = data.data;
-        console.log(this.restaurtantArray);
+        //console.log(this.restaurtantArray);
+        this.LoadingFlag=false;
+        
       }
     ),
     (error:any)=>{
-      console.log(error);
+      //console.log(error);
+      this.LoadingFlag=false;
+
     }
   }
 

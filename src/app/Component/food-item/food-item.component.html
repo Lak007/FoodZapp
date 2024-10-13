@@ -1,3 +1,4 @@
+
 <div class="row mt-3" *ngIf="restaurantDetails && FoodItemData">
     <div class="card card-1 w-100">
         <div class="card-header bg-danger">
@@ -23,40 +24,90 @@
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center align-items-center my-class" *ngIf="restaurantDetails.length==0" >
+    <div class="spinner-border text-danger" role="status"  style="height: 70px; width: 70px;">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
 <div class="row mt-3">
-    <div class="col-12 col-sm-6 col-md-4 d-flex" *ngFor="let data of FoodItemData">
-        <div class="card card-2 mb-3 flex-fill"> <!-- Added flex-fill -->
-            <div class="card-body"> <!-- Added d-flex flex-column -->
-                <div class="row "> <!-- Ensures the row expands -->
-                    <div class="col-12 col-md-6">
-                        <img [src]="data.photoUrl" class="img-fluid" alt="{{data.menuItemName}}">
-                    </div>
-                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-                        <p class="fw-bold text-center">
-                            {{ data.description | slice:0:60 }}
-                        </p>
-                        <div class="star-rating-red mt-4">
-                            <p class="text-center">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </p>
+    <div [ngClass]="{
+        'col-9':CartResponse.length>0,
+        'col-12':CartResponse.length==0
+    }">
+        <div class="row">
+            <div class="col-4 d-flex" *ngFor="let data of FoodItemData; let i=index">
+                <div class="card card-2 mb-3 flex-fill">
+                    <div class="card-body"> 
+                        <div class="row"> 
+                            <div class="col-12 col-md-6">
+                                <img [src]="data.photoUrl"
+                                (error)="DeleteImage(i,FoodItemData)"
+                                class="img-fluid" alt="{{data.menuItemName}}">
+                            </div>
+                            <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                                <p class="fw-bold text-center">
+                                    {{ data.description | slice:0:40 }}
+                                </p>
+                                <div class="star-rating-red mt-4">
+                                    <p class="text-center">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-12 col-md-6">
-                        <p class="fw-bold">{{data.menuItemName}}</p>
-                        <p class="fw-bold">Price : ₹{{data.price}}</p>
-                    </div>
-                    <div class="col-12 col-md-6 d-flex align-items-end">
-                        <button class="mybutton w-100" (click)="addToCart()">Add to Cart</button>
+                        <div class="row mt-3 d-flex">
+                            <div class="col-12 col-md-6 flex-fill">
+                                <p class="fw-bold">{{data.menuItemName}}</p>
+                                <p class="fw-bold">Price : ₹{{data.price}}</p>
+                            </div>
+                            <div class="col-12 col-md-6 d-flex align-items-end flex-fill">
+                                <button class="mybutton w-100" (click)="addToCart(data.itemID)">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div [ngClass]="{
+        'col-3':CartResponse.length>0
+    }" *ngIf="CartResponse.length>0">
+    <div class="card card-rounded">
+        <div class="card-header text-center bg-danger">
+            <h2 style="color: white;">Cart Value</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12" *ngFor="let response of CartResponse; let j =index">
+                    <hr>
+                    <div class="row mt-2">
+                        <div class="col-7 d-flex align-items-center justify-content-center flex-column">
+                          <p class="fw-bold">Price : ₹{{response.price}}</p>
+                          <p class="fw-bold mt-3">Quantity :{{response.quantity}}</p>
+                          <button class="btn btn-danger mt-4" (click)="Remove(response.cartId)">Remove</button>
+                        </div>
+
+                        <div class="col-5 d-flex flex-column">
+                            <img [src]="response.photoUrl"
+                            (error)="DeleteCart(j,CartResponse)"
+                            >
+                            <p class="fw-bold">{{response.menuItemName}}</p>
+
+                        </div>
+                    </div> 
+                </div>
+                
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-center bg-danger" *ngIf="CartResponse.length>0">
+            <p class="fw-bolder" style="color: white;">Total Amount : <span style="color: white;">  ₹ {{totalCartAmount}}</span></p>  
+          </div>
+    </div>
+    </div>
+
 </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand text-danger" href="#">FoodZapp</a>
+    <a class="navbar-brand text-light fw-bolder" href="#">FoodZapp</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,8 +10,11 @@
           <a class="nav-link active text-light fs-5" routerLink="/Foods">Home</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-success" type="submit">Login</button>
+      <form class="d-flex" role="search" *ngIf="UserData">
+        <button class="btn btn-danger" (click)="logOut()" type="submit">Logout</button>
+      </form>
+      <form class="d-flex" role="search" *ngIf="!UserData">
+        <button class="btn btn-success" (click)="navigatetoLogin()" type="submit">Login</button>
       </form>
     </div>
   </div>
@@ -22,3 +25,6 @@
 <div *ngIf="getRoute()">
   <router-outlet></router-outlet>
 </div>
+<footer class="fixed-bottom bg-dark text-light text-center p-3">
+  &copy; 2024 FoodZapp <i class="fas fa-heart text-light"></i>         Created by Lakshman.
+</footer>

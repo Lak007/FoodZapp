@@ -1,0 +1,53 @@
+<div class="myclass d-flex justify-content-center align-items-center">
+  <div class="card" style="width: 400px;">
+    <div class="card-header text-center">
+      <h2 class="fw-bold">Register</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class=" d-flex align-items-center same mb-4">
+          <i class="fa fa-user"></i>
+          <input type="text" id="userName" name="userName" formControlName="userName" required
+            placeholder="Enter your Username">
+        </div>
+        <div class=" d-flex align-items-center same"
+          [ngClass]="{'mb-4':!(email?.invalid && (email?.dirty || email?.touched))}">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="email" name="email" formControlName="email" required placeholder="Enter your Email">
+        </div>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <p class="text-danger" *ngIf="email?.errors?.['required']">Email is required.</p>
+          <p class="text-danger" *ngIf="email?.errors?.['email']">Invalid email format.</p>
+        </div>
+
+        <div class="d-flex align-items-center same"
+          [ngClass]="{'mb-4':!(password?.invalid && (password?.dirty || password?.touched))}">
+          <i class="fa fa-lock"></i>
+          <input type="password" id="password" name="password" formControlName="password" required minlength="6"
+            placeholder="Enter your Password">
+
+        </div>
+        <div *ngIf="password?.invalid && (password?.touched || password?.dirty)">
+          <p class="text-danger" *ngIf="password?.errors?.['required']">Password is required.</p>
+          <p class="text-danger" *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.
+          </p>
+        </div>
+
+        <div class="d-flex align-items-center same"
+          [ngClass]="{'mb-4':!(mobileNo?.invalid && (mobileNo?.dirty || mobileNo?.touched))}">
+          <i class="fa fa-phone"></i>
+          <input type="number" id="mobileNo" name="mobileNo" formControlName="mobileNo" required minlength="10"
+            maxlength="10" placeholder="Enter your Mobile">
+        </div>
+        <div *ngIf="mobileNo?.invalid && (mobileNo?.touched || mobileNo?.dirty)">
+          <p class="text-danger" *ngIf="mobileNo?.errors?.['required']">Mobile number required</p>
+          <p class="text-danger" *ngIf="mobileNo?.errors?.['minlength']">Enter valid Number</p>
+
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

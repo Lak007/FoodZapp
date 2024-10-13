@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { FoodRestaurantComponent } from './Component/food-restaurant/food-restaurant.component';
 import { FoodItemComponent } from './Component/food-item/food-item.component';
 import { FoodsComponent } from './Component/foods/foods.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Component/login/login.component';
+import { RegistrationComponent } from './Component/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import { LoginComponent } from './Component/login/login.component';
     FoodsComponent,
     FoodRestaurantComponent,
     FoodItemComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
